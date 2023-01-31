@@ -18,7 +18,7 @@ max_pwm = 1.000
 
 sleep_time = 5
 
-pwm.enable()
+fan.enable()
 
 while True:
   sensor_output = subprocess.check_output(["vcgencmd", "measure_temp"], universal_newlines=True)
