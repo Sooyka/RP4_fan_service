@@ -21,7 +21,7 @@ sleep_time = 5
 fan.enable()
 
 while True:
-  sensor_output = subprocess.check_output(["vcgencmd", "measure_temp"], universal_newlines=True)
+  sensors_output = subprocess.check_output(["sensors", "-u"], universal_newlines=True)
   current_hour = datetime.datetime.today().hour 
   if 9 <= current_hour < 21:
     max_pwm = 1.000
@@ -29,7 +29,12 @@ while True:
   else:
     max_pwm = 0.000
     sleep_time = 3600
-  current_temp_word = sensor_output[5:8]
+  for line in sensors_output.split('\n'):
+    if 'temp1_input' in line:
+      current_temp_line = line
+  for word in current_temp_line.split(' '):
+    if '.' in word:
+      current_temp_word = word
   current_temp = float(current_temp_word)
   pwm_value = max_pwm
   if current_temp <= min_temp:
