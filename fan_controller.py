@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from periphery import PWM
 
 from time import sleep
@@ -23,7 +24,7 @@ fan.enable()
 while True:
   sensors_output = subprocess.check_output(["sensors", "-u"], universal_newlines=True)
   current_hour = datetime.datetime.today().hour 
-  if 9 <= current_hour < 22:
+  if 9 <= current_hour < 23:
     max_pwm = 1.000
     sleep_time = 5
   else:
