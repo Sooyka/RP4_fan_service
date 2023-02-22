@@ -23,7 +23,7 @@ fan.enable()
 while True:
   sensors_output = subprocess.check_output(["sensors", "-u"], universal_newlines=True)
   current_hour = datetime.datetime.today().hour 
-  if 9 <= current_hour < 21:
+  if 9 <= current_hour < 22:
     max_pwm = 1.000
     sleep_time = 5
   else:

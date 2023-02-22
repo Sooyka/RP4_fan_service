@@ -5,8 +5,8 @@
 
   outputs = { self, nixpkgs }: {
 
-    Packages =
-      with import nixpkgs { system = "x86_64-linux"; };
+    defaultPackage."aarch64-linux" =
+      with import nixpkgs { system = "aarch64-linux"; };
       stdenv.mkDerivation {
         name = "fan_service";
         src = self;
