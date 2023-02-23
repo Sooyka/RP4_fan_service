@@ -11,7 +11,11 @@
         name = "fan_service";
         src = self;
 
-        installPhase = ''mkdir $out/bin && install -t $out/bin fan_controller.py '';
+        installPhase = 
+        ''
+          mkdir $out/bin 
+          install -t $out/bin fan_controller.py 
+        '';
       };
    };
 }
