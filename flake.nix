@@ -13,7 +13,7 @@
 
         installPhase = 
         ''
-          mkdir $out/bin 
+          mkdir -p $out/bin 
           install -t $out/bin fan_controller.py 
         '';
       };
